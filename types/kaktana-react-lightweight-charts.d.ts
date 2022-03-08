@@ -24,6 +24,7 @@ declare module "kaktana-react-lightweight-charts" {
         onTimeRangeMove?: TimeRangeChangeEventHandler;
         darkTheme?: boolean;
         alwaysClean?: boolean;
+        applyOptions?: object;
     }
 
     export default class ChartWrapper extends React.Component<Props> {}

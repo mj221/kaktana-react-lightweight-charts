@@ -60,6 +60,14 @@ const lightTheme = {
     },
 };
 
+const decimalEnabled = {
+    priceFormat: {
+        type: 'price',
+        precision: 5,
+        minMove: 0.00001,
+    },
+};
+
 class ChartWrapper extends React.Component {
     constructor(props) {
         super(props);
@@ -107,6 +115,7 @@ class ChartWrapper extends React.Component {
                 [
                     prevProps.options,
                     prevProps.darkTheme,
+                    prevProps.showDecimals,
                     prevProps.candlestickSeries?.length,
                     prevProps.lineSeries?.length,
                     prevProps.areaSeries?.length,
@@ -116,6 +125,7 @@ class ChartWrapper extends React.Component {
                 [
                     this.props.options,
                     this.props.darkTheme,
+                    this.props.showDecimals,
                     this.props.candlestickSeries?.length,
                     this.props.lineSeries?.length,
                     this.props.areaSeries?.length,
@@ -133,6 +143,9 @@ class ChartWrapper extends React.Component {
         } else {
             Object.keys(this.series).forEach(seriesType => {
                 this.series[seriesType].forEach((series, i) => {
+                    if(this.props.applyOptions){
+                        series.applyOptions(this.props.applyOptions);
+                    };
                     series.setData(this.props[seriesType][i].data);
                 })
             });
@@ -179,6 +192,9 @@ class ChartWrapper extends React.Component {
             serie.data,
             serie.linearInterpolation
         );
+        if(this.props.applyOptions){
+            series.applyOptions(this.props.applyOptions);
+        };
         series.setData(data);
         if (serie.markers) series.setMarkers(serie.markers);
         if (serie.priceLines)
