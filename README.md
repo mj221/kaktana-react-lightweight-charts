@@ -87,6 +87,7 @@ class App extends Component {
 |Name|Type|Description|
 |----|----|-----------|
 |`options`|`object`|Defines the global options of the chart. [Refer to the official Docs](https://github.com/tradingview/lightweight-charts/tree/v3.3.0/docs/customization.md)|
+|`applyOptions`|`object`|Allows overwriting of default chart options. [Refer to the official Docs](https://github.com/tradingview/lightweight-charts/tree/v3.3.0/docs/customization.md)|
 |`autoWidth`|`boolean`|If true, the chart resizes automatically to 100% of its container width|
 |`autoHeight`|`boolean`|If true, the chart resizes automatically to 100% of its container height|
 |`width`|`number`|if `autoWidth` is false, defines the width of the chart in px|
